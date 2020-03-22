@@ -69,7 +69,10 @@ fn cwd_sandbox<T, F: Fn()-> T>(f: F) -> T{
 #[derive(serde::Serialize,serde::Deserialize,Debug,Default)]
 #[serde(default)]
 struct HirSynData {
-    ty: String
+    ty: String,
+    fname: String,
+    line: usize,
+    col: usize,
 }
 
 fn test_4_lint(file: &File) {
@@ -97,7 +100,7 @@ impl<'ast> syn::visit::Visit<'ast> for NoArcStringLint {
                 Some(x) => {
                     let ty = x.ty.clone().replace(" ", "");
                     if ty == "std::sync::Arc<std::string::String>" {
-                        self.errors.push(format!("found Arc<String> "));
+                        self.errors.push(format!("found Arc<String>  {} line: {} column: {}", x.fname, x.line,x.col));
                     }
                 },
                 None => panic!("NO HIR DATA FOR LET EXPR")

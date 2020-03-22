@@ -1,4 +1,3 @@
-//! shared types between wasm frontend and server (usually dto)
 /*#![feature(register_tool)]
 #![feature(stmt_expr_attributes)]
 #![register_tool(hir_syn)]*/
