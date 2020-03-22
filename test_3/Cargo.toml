@@ -1,0 +1,11 @@
+[package]
+name = "test_3"
+version = "0.1.0"
+authors = ["macpp <mac.map.void@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "^1.0.85", features = ['derive'] }
+strum_macros = "0.18.0"
